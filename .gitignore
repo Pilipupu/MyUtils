@@ -2,8 +2,6 @@
 .idea/
 *.swp
 *.iml
-build/tool.jar
-zops-cobbler.tgz
 target/
 venv
 ut.log
