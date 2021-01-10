@@ -8,6 +8,6 @@ class IgnoreIOExceptionExtension : TestExecutionExceptionHandler {
         if (throwable is IOException) {
             return
         }
-        println(context.displayName)
+        println(context.uniqueId)
     }
 }
