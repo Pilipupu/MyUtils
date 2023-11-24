@@ -7,12 +7,12 @@ import org.reflections.util.FilterBuilder
 
 object Reflection {
     val reflect = Reflections(
-        ConfigurationBuilder().setUrls(ClasspathHelper.forPackage("org.demo"))
+        ConfigurationBuilder().setUrls(ClasspathHelper.forPackage("extensionpoint"))
             .setScanners(
                 SubTypesScanner(), MethodAnnotationsScanner(), FieldAnnotationsScanner(),
                 TypeAnnotationsScanner(), MethodParameterScanner()
             ).filterInputsBy(
-                FilterBuilder().includePackage("org.demo")
+                FilterBuilder().includePackage("extensionpoint")
             )
     )
 

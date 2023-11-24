@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="trace" monitorInterval="30">
+    <Appenders>
+        <RollingFile name="RollingFile" fileName="/Users/jingwang/log"
+                     filePattern="/Users/jingwang/logs/test-%d{yyyy-MM-dd}-%i.log.gz">
+
+            <Policies>
+                <SizeBasedTriggeringPolicy size="450 MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="trace" additivity="false">
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

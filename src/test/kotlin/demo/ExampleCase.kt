@@ -32,6 +32,36 @@ class ExampleCase {
         println(Files.readString(Paths.get("src/test/resources/test.json")))
 
     }
+
+    @Test
+    fun testComputeIfAbsent() {
+        val m = mutableMapOf<String, String>()
+        m.computeIfAbsent("a") {
+            println(it)
+            it
+        }
+        println(m["a"])
+    }
+
+    @Test
+    fun testRegex() {
+        val regex = createRegexFromGlob("/var/test/out".replace("\\{.*\\}".toRegex(), ".*"))
+    }
+
+    fun createRegexFromGlob(glob: String): String? {
+        var out: String? = "^"
+        for (i in 0 until glob.length) {
+            val c = glob[i]
+            when (c) {
+                '*' -> out += ".*"
+                '?' -> out += '.'
+                '\\' -> out += "\\\\"
+                else -> out += c
+            }
+        }
+        out += '$'
+        return out
+    }
 }
 
 object BashMock {

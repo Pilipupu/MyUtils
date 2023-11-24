@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generate.AddingnewinstancerulevoDao">
+  <resultMap id="BaseResultMap" type="generate.Addingnewinstancerulevo">
+    <id column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="AdjustmentType" jdbcType="VARCHAR" property="adjustmenttype" />
+    <result column="adjustmentValue" jdbcType="INTEGER" property="adjustmentvalue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uuid, AdjustmentType, adjustmentValue
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from AddingNewInstanceRuleVO
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from AddingNewInstanceRuleVO
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="uuid" keyProperty="uuid" parameterType="generate.Addingnewinstancerulevo" useGeneratedKeys="true">
+    insert into AddingNewInstanceRuleVO (AdjustmentType, adjustmentValue)
+    values (#{adjustmenttype,jdbcType=VARCHAR}, #{adjustmentvalue,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="uuid" keyProperty="uuid" parameterType="generate.Addingnewinstancerulevo" useGeneratedKeys="true">
+    insert into AddingNewInstanceRuleVO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adjustmenttype != null">
+        AdjustmentType,
+      </if>
+      <if test="adjustmentvalue != null">
+        adjustmentValue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adjustmenttype != null">
+        #{adjustmenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustmentvalue != null">
+        #{adjustmentvalue,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="generate.Addingnewinstancerulevo">
+    update AddingNewInstanceRuleVO
+    <set>
+      <if test="adjustmenttype != null">
+        AdjustmentType = #{adjustmenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustmentvalue != null">
+        adjustmentValue = #{adjustmentvalue,jdbcType=INTEGER},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="generate.Addingnewinstancerulevo">
+    update AddingNewInstanceRuleVO
+    set AdjustmentType = #{adjustmenttype,jdbcType=VARCHAR},
+      adjustmentValue = #{adjustmentvalue,jdbcType=INTEGER}
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

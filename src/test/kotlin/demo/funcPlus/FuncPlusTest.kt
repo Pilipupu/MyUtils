@@ -8,10 +8,7 @@ class FuncPlusTest {
 
     @Test
     fun plus() {
-        var b = {
-            a
-            println("b")
-        }()
+
     }
 }
 
